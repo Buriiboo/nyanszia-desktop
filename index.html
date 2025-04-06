@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Biffany Desktop</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background: transparent;
+    }
+    canvas#live2d {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  
+</head>
+<body>
+  <canvas id="live2d"></canvas>
+  <script src="./assets/cubism/core/live2dcubismcore.min.js"></script>
+  <script src="./assets/cubism/framework/live2dcubismframework.js"></script>
+  <script src="./renderer.js"></script>
+</body>
+</html>

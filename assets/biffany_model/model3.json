@@ -1,0 +1,73 @@
+{
+    "Version": 3,
+    "FileReferences": {
+      "Moc": "Biffany.moc3",
+      "Textures": [
+        "biffany.2048/texture_00.png",
+        "biffany.2048/texture_01.png"
+      ],
+      "Physics": "Biffany.physics3.json",
+      "Pose": "Biffany.pose3.json",
+      "DisplayInfo": "Biffany.cdi3.json",
+      "UserData": "Biffany.userdata3.json",
+      "Expressions": [
+        {
+          "Name": "F01",
+          "File": "expressions/F01.exp3.json"
+        },
+        {
+          "Name": "F02",
+          "File": "expressions/F02.exp3.json"
+        },
+        {
+          "Name": "F03",
+          "File": "expressions/F03.exp3.json"
+        },
+        {
+          "Name": "F04",
+          "File": "expressions/F04.exp3.json"
+        }
+      ],
+      "Motions": {
+        "Idle": [
+          {
+            "File": "motions/biffany_g_idle.motion3.json",
+            "FadeInTime": 0.5,
+            "FadeOutTime": 0.5
+          },
+          {
+            "File": "motions/biffany_g_m15.motion3.json",
+            "FadeInTime": 0.5,
+            "FadeOutTime": 0.5
+          }
+        ]
+      }
+    },
+    "Groups": [
+      {
+        "Target": "Parameter",
+        "Name": "EyeBlink",
+        "Ids": [
+          "ParamEyeLOpen",
+          "ParamEyeROpen"
+        ]
+      },
+      {
+        "Target": "Parameter",
+        "Name": "LipSync",
+        "Ids": [
+          "ParamMouthOpenY"
+        ]
+      }
+    ],
+    "HitAreas": [
+      {
+        "Id": "HitArea",
+        "Name": "Head"
+      },
+      {
+        "Id": "HitArea2",
+        "Name": "Body"
+      }
+    ]
+  }
