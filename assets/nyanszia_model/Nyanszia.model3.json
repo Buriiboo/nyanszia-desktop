@@ -1,0 +1,1 @@
+{ "Version": 3, "FileReferences": { "Moc": "Nyanszia.moc3", "Textures": ["Nyanszia.2048/texture_00.png"], "Motions": { "Idle": [{ "File": "motions/nyanszia_idle.motion3.json", "FadeInTime": 0.5, "FadeOutTime": 0.5 }] }, "Expressions": [{ "Name": "Smirk", "File": "expressions/Smirk.exp3.json" }] } }
