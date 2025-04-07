@@ -1,21 +1,12 @@
+
 {
-  "name": "biffany-desktop",
+  "name": "nyanszia-desktop",
   "version": "1.0.0",
-  "description": "Tsundere Live2D Assistant powered by Electron and OpenAI",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "electron .",
-    "build": "electron-builder",
-    "postinstall": "electron-builder install-app-deps",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "electron": "^35.1.4"
+    "start": "electron ."
   },
   "devDependencies": {
-    "electron-builder": "^24.6.0"
+    "electron": "^35.1.4"
   }
 }
