@@ -1,27 +1,34 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Nyanszia Desktop</title>
-    <style>
-      body {
-        margin: 0;
-        background: transparent;
-        overflow: hidden;
-      }
-      canvas {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        z-index: 9999;
-      }
-    </style>
-  </head>
-  <body>
-    <canvas id="live2d"></canvas>
-    <script src="./assets/cubism/Core/live2dcubismcore.min.js"></script>
-    <script src="./assets/cubism/Framework/live2dcubismframework.js"></script>
-    <script src="./src/renderer.js"></script>
-  </body>
+<head>
+  <title>Nyanszia Desktop Waifu</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: transparent;
+      width: 100%;
+      height: 100%;
+    }
+
+    canvas#live2d {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      background: rgba(255, 0, 255, 0.05); /* Temporary debug background */
+    }
+  </style>
+</head>
+<body>
+  <canvas id="live2d"></canvas>
+
+  <script src="./assets/cubism/Core/live2dcubismcore.min.js"></script>
+  <script src="./assets/cubism/Framework/live2dcubismframework.js"></script>
+  <script type="module" src="./src/renderer.js"></script>
+</body>
 </html>

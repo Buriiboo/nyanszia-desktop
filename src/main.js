@@ -1,4 +1,3 @@
-
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
 
@@ -6,17 +5,19 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    frame: false,
     transparent: true,
+    frame: false,
     alwaysOnTop: true,
     webPreferences: {
-      preload: path.join(__dirname, "renderer.js"),
       contextIsolation: false,
       nodeIntegration: true,
     },
   });
 
-  win.loadFile("index.html");
+  win.loadFile(path.join(__dirname, "../index.html"));
+
+  // 💡 FORCE OPEN DEVTOOLS
+  win.webContents.openDevTools({ mode: "detach" }); // can also use "right" or "bottom"
 }
 
 app.whenReady().then(createWindow);
