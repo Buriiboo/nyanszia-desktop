@@ -4,7 +4,7 @@ const path = require("path");
 
 // Canvas setup
 const canvas = document.getElementById("live2d");
-const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl"); // 💖 THIS is the context you were missing inside loadTexture
+const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 canvas.style.width = window.innerWidth + "px";
@@ -26,15 +26,18 @@ CubismFramework.initialize();
 
 let model = null;
 
-console.log("Trying to fetch model3.json from:", window.location.href);
-fetch(path.join(__dirname, "assets/biffany_model/model3.json"))
+console.log("Trying to fetch Nyanszia.model3.json from:", window.location.href);
+fetch(path.join(__dirname, "assets/nyanszia_model/Nyanszia.model3.json"))
   .then(res => {
     console.log("Model3.json fetch status: ", res.status, res.url);
     return res.json();
   })
   .then(async json => {
+
+    console.log("🔍 Available in Live2D:", Object.keys(Live2D));
+
     const setting = new CubismModelSettingJson(json, json.size);
-    const mocUrl = `./assets/biffany_model/${setting.getModelFileName()}`;
+    const mocUrl = `./assets/nyanszia_model/${setting.getModelFileName()}`;
 
     const mocData = await fetch(mocUrl).then(res => res.arrayBuffer());
     const moc = Live2D.CubismMoc.create(mocData);
@@ -48,7 +51,7 @@ fetch(path.join(__dirname, "assets/biffany_model/model3.json"))
     const textureCount = setting.getTextureCount();
     for (let i = 0; i < textureCount; i++) {
       const textureFileName = setting.getTextureFileName(i);
-      const texture = await loadTexture(gl, `./assets/biffany_model/${textureFileName}`);
+      const texture = await loadTexture(gl, `./assets/nyanszia_model/${textureFileName}`);
       gl.bindTexture(gl.TEXTURE_2D, texture);
     }
 
@@ -56,19 +59,16 @@ fetch(path.join(__dirname, "assets/biffany_model/model3.json"))
   });
 
 function draw() {
-if (!model) return;
+  if (!model) return;
 
-// Just clear once to magenta-ish background
-gl.clearColor(1.0, 0.8, 1.0, 1.0);
-gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.clearColor(1.0, 0.8, 1.0, 1.0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
 
-model.update();
-model.draw(gl); // still mocked, but clean
-//console.log("Drawing Biffany...");
+  model.update();
+  model.draw(gl);
 
-requestAnimationFrame(draw);
+  requestAnimationFrame(draw);
 }
-
 
 function loadTexture(gl, url) {
   return new Promise((resolve, reject) => {

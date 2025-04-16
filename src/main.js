@@ -14,10 +14,10 @@ function createWindow() {
     },
   });
 
+  // ✅ load index.html from the correct path
   win.loadFile(path.join(__dirname, "../index.html"));
 
-  // 💡 FORCE OPEN DEVTOOLS
-  win.webContents.openDevTools({ mode: "detach" }); // can also use "right" or "bottom"
+  win.webContents.openDevTools({ mode: "detach" });
 }
 
 app.whenReady().then(createWindow);
