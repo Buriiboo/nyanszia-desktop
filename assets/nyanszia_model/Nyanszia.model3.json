@@ -3,8 +3,8 @@
 	"FileReferences": {
 		"Moc": "Nyanszia.moc3",
 		"Textures": [
-			"Nyanszia.2048/texture_00.png",
-			"Nyanszia.2048/texture_01.png"
+			"texture_00.png",
+			"texture_01.png"
 		],
 		"Physics": "Nyanszia.physics3.json",
 		"Pose": "Nyanszia.pose3.json",
