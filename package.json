@@ -1,14 +1,14 @@
 {
   "name": "nyanszia-desktop",
-  "version": "1.0.0",
+  "version": "0.1.0",
+  "private": true,
   "main": "src/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "electronmon ."
   },
   "devDependencies": {
-    "electron": "^35.1.4"
-  },
-  "dependencies": {
-    "vite": "^6.3.0"
+    "electron": "^31.0.0",
+    "electronmon": "^2.0.0"
   }
 }

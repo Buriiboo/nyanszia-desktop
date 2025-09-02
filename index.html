@@ -1,43 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <title>Nyanszia</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 img-src 'self' data:;
+                 style-src 'self' 'unsafe-inline';
+                 script-src 'self';">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nyanszia Desktop</title>
   <style>
+    :root { --pad: 12px; --ui-radius: 16px; --blur: 8px; }
     html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      overflow: hidden;
+      width: 100%; height: 100%; margin: 0;
+      background: transparent; overflow: hidden;
+      -webkit-user-select: none; user-select: none;
     }
-
-    canvas#live2d {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
+    /* Root container sits bottom-right; window itself is transparent & frameless */
+    .root {
+      position: fixed; inset: auto var(--pad) var(--pad) auto;
+      display: grid; grid-template-rows: 1fr auto; gap: 8px;
+      pointer-events: none; /* clicks pass through unless opted in */
+    }
+    /* Live2D canvas scales responsively and stays pixel-crisp */
+    #live2d {
+      width: min(420px, 30vw);
+      aspect-ratio: 3 / 4;
+      display: block;
+      background: rgba(255,255,255,0.03);
+      border-radius: 18px;
+      filter: drop-shadow(0 8px 28px rgba(0,0,0,.35));
+      pointer-events: auto; /* allow pointer tracking */
+    }
+    /* Drag region to move the window */
+    .drag {
+      position: absolute; inset: 0;
+      -webkit-app-region: drag;
       pointer-events: none;
-      z-index: 9999;
     }
+    /* Minimal controls (clickable; not draggable) */
+    .controls {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 8px; border-radius: var(--ui-radius);
+      backdrop-filter: blur(var(--blur));
+      background: rgba(30,30,46,0.35);
+      pointer-events: auto; -webkit-app-region: no-drag;
+      margin-left: auto;
+      box-shadow: 0 6px 24px rgba(0,0,0,.25);
+    }
+    .btn {
+      border: none; outline: none; padding: 6px 10px; border-radius: 10px;
+      background: rgba(255,255,255,0.12); color: #fff;
+      font: 500 12px/1.2 Inter, system-ui, sans-serif;
+      transition: transform .08s ease, background .15s ease; cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,0.18); }
+    .btn:active { transform: translateY(0); }
+    .spacer { width: 1px; height: 16px; background: rgba(255,255,255,0.18); }
   </style>
 </head>
 <body>
-  <canvas id="live2d"></canvas>
+  <div class="root">
+    <canvas id="live2d"></canvas>
 
-  <!-- ✅ Load Cubism Core & Framework -->
-  <script src="./assets/cubism/Core/live2dcubismcore.min.js"></script>
-  <script src="./assets/cubism/Framework/live2dcubismframework.real.js"></script>
-  <script src="./assets/cubism/Framework/modelsetting/CubismModelSettingJson.js"></script>
-  <script src="./assets/cubism/Framework/model/CubismMoc.js"></script>
-  <script src="./assets/cubism/Framework/model/CubismModel.js"></script>
-  <script src="./assets/cubism/Framework/math/CubismMatrix44.js"></script>
-  <script src="./assets/cubism/Framework/rendering/webgl/CubismRenderer_WebGL.js"></script>
-  <script src="./assets/cubism/Framework/rendering/webgl/CubismShader_WebGL.js"></script>
+    <div class="controls">
+      <button id="btnIdle" class="btn">Idle</button>
+      <button id="btnWave" class="btn">Wave</button>
+      <div class="spacer"></div>
+      <button id="btnHide" class="btn">Hide</button>
+    </div>
 
-
-  <!-- ✅ Load renderer -->
-  <script src="./renderer.js" ></script>
+    <div class="drag"></div>
+  </div>
+  <script src="assets/cubism/Core/live2dcubismcore.js"></script>
+  <script src="assets/cubism/Framework/live2dcubismframework.real.js"></script>
+  <script src="./renderer.js"></script>
 </body>
 </html>

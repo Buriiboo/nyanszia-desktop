@@ -181,6 +181,8 @@ declare namespace Live2DCubismCore {
         defaultValues: Float32Array;
         /** Parameter values. */
         values: Float32Array;
+        /** Parameter Repeat informations. */
+        repeats: Int32Array;
         /** Number of key values of each parameter. */
         keyCounts: Int32Array;
         /** Key values of each parameter. */
