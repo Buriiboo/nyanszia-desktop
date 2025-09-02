@@ -1,27 +1,43 @@
-
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Nyanszia Desktop</title>
-    <style>
-      body {
-        margin: 0;
-        background: transparent;
-        overflow: hidden;
-      }
-      canvas {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        z-index: 9999;
-      }
-    </style>
-  </head>
-  <body>
-    <canvas id="live2d"></canvas>
-    <script src="./assets/cubism/Core/live2dcubismcore.min.js"></script>
-    <script src="./assets/cubism/Framework/live2dcubismframework.js"></script>
-    <script src="./src/renderer.js"></script>
-  </body>
+<html lang="en">
+<head>
+  <title>Nyanszia</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    canvas#live2d {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="live2d"></canvas>
+
+  <!-- ✅ Load Cubism Core & Framework -->
+  <script src="./assets/cubism/Core/live2dcubismcore.min.js"></script>
+  <script src="./assets/cubism/Framework/live2dcubismframework.real.js"></script>
+  <script src="./assets/cubism/Framework/modelsetting/CubismModelSettingJson.js"></script>
+  <script src="./assets/cubism/Framework/model/CubismMoc.js"></script>
+  <script src="./assets/cubism/Framework/model/CubismModel.js"></script>
+  <script src="./assets/cubism/Framework/math/CubismMatrix44.js"></script>
+  <script src="./assets/cubism/Framework/rendering/webgl/CubismRenderer_WebGL.js"></script>
+  <script src="./assets/cubism/Framework/rendering/webgl/CubismShader_WebGL.js"></script>
+
+
+  <!-- ✅ Load renderer -->
+  <script src="./renderer.js" ></script>
+</body>
 </html>
