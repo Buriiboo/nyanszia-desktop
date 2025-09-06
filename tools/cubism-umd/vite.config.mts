@@ -5,16 +5,17 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'Live2DCubismFramework',             // global name on window
+      name: 'Live2DCubismFramework',
       formats: ['umd'],
-      fileName: () => 'live2dcubismframework.js' // output filename
+      fileName: () => 'live2dcubismframework.js',
     },
     sourcemap: false,
-    minify: false
+    minify: false,
+    rollupOptions: { treeshake: false }, 
   },
   resolve: {
     alias: {
-      '@framework': path.resolve(__dirname, '../../assets/cubism/FrameworkSrc')
-    }
-  }
+      '@framework': path.resolve(__dirname, '../../assets/cubism/FrameworkSrc'),
+    },
+  },
 });

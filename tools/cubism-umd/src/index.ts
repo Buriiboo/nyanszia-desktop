@@ -1,17 +1,27 @@
-// Build a UMD that exposes the full namespace as window.Live2DCubismFramework
+// Build a UMD that exposes FULL Cubism namespace as the *default export*.
+// Vite will map that to the global name you set in vite.config.mts
+// (Live2DCubismFramework), so no manual window assignment needed.
 
 import * as NS from '@framework/live2dcubismframework';
 
-// Pull in side-effect modules so UMD includes the classes you need:
-import '@framework/rendering/cubismrenderer_webgl';
-import '@framework/motion/cubismmotion';
-import '@framework/model/cubismmodel';
-import '@framework/cubismdefaultparameterid';
+// Pull in class modules so they aren't tree-shaken:
+import { CubismMoc } from '@framework/model/cubismmoc';
+import { CubismModel } from '@framework/model/cubismmodel';
+import { CubismRenderer_WebGL } from '@framework/rendering/cubismrenderer_webgl';
+import { CubismMotion } from '@framework/motion/cubismmotion';
+import { CubismDefaultParameterId } from '@framework/cubismdefaultparameterid';
 
-// (Optional extras you might need later)
-// import '@framework/physics/cubismphysics';
-// import '@framework/effect/cubismbreath';
-// import '@framework/math/cubismmatrix44';
+// Optionals you might need later:
+// import { CubismMatrix44 } from '@framework/math/cubismmatrix44';
+// import { CubismPhysics } from '@framework/physics/cubismphysics';
+// import { CubismBreath } from '@framework/effect/cubismbreath';
 
-export * as Live2DCubismFramework from '@framework/live2dcubismframework';
-(window as any).Live2DCubismFramework = NS;  // define the global used by your renderer.js
+// Attach classes to the namespace:
+(NS as any).CubismMoc = CubismMoc;
+(NS as any).CubismModel = CubismModel;
+(NS as any).CubismRenderer_WebGL = CubismRenderer_WebGL;
+(NS as any).CubismMotion = CubismMotion;
+(NS as any).CubismDefaultParameterId = CubismDefaultParameterId;
+
+// 👑 The important part: export *default* for UMD
+export default NS;
