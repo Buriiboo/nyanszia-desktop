@@ -1,0 +1,12 @@
+{
+  "name": "cubism-umd",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "vite": "^5.0.0"
+  },
+  "scripts": {
+    "build": "vite build"
+  }
+}
